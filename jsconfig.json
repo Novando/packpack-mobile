@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@packpack": ["./src/*"],
+      "@packpack-assets": ["./assets/*"]
+    }
+  }
+}

@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, View, Button, Image, Text, ImageBackground, Pressable } from 'react-native'
 import {useTailwind} from 'tailwind-rn';
 
-export default function Home ({ navigation }) {
+export default function ({ navigation }) {
   const tailwind = useTailwind();
 
   return (

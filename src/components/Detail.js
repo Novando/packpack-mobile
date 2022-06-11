@@ -3,7 +3,7 @@ import { View, Text, Image, Pressable, Modal, Button, TextInput, StyleSheet } fr
 import { useTailwind } from 'tailwind-rn';
 
 
-export default function Detail () {
+export default function () {
   const tailwind = useTailwind();
   const [isModal, setIsModal] = useState(false);
 

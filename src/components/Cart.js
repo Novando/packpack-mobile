@@ -2,7 +2,7 @@ import React from 'react'
 import { ScrollView, View, Button, Image, Text, ImageBackground, Pressable, TextInput } from 'react-native'
 import {useTailwind} from 'tailwind-rn';
 
-export default function Home ({ navigation }) {
+export default function ({ navigation }) {
   const tailwind = useTailwind();
 
   return (
@@ -18,7 +18,7 @@ export default function Home ({ navigation }) {
           </View>
           <View style={tailwind('mx-1')}>
             <TextInput
-              style={tailwind('border border-slate-500 rounded w-8 h-8 p-2')}
+              style={tailwind('border border-slate-500 rounded w-20 h-8 p-2')}
               keyboardType='number-pad' />
             <Text>D</Text>
           </View>
@@ -33,14 +33,16 @@ export default function Home ({ navigation }) {
           </View>
           <View style={tailwind('mx-1')}>
             <TextInput
-              style={tailwind('border border-slate-500 rounded w-8 h-8 p-2')}
+              style={tailwind('border border-slate-500 rounded w-20 h-8 p-2')}
               keyboardType='number-pad' />
             <Text>D</Text>
           </View>
         </View>
       </ScrollView>
-      <View style={tailwind('absolute bottom-0 h-12 w-full flex flex-row border-t-2 border-slate-300')}>
-        <Pressable style={tailwind('grow bg-amber-600 m-1 rounded-xl')}>
+      <View style={tailwind('absolute bottom-0 h-12 w-full')}>
+        <Pressable
+          style={tailwind('grow bg-amber-600')}
+          onPress={() => navigation.navigate('Address')}>
           <Text style={tailwind('m-auto')}>Rp 1000</Text>
         </Pressable>
       </View>

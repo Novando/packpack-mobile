@@ -9,6 +9,6 @@ export default {
     return axios.get(`${apiUrl}`, {params:filter});
   },
   getProductDetail (id) {
-    return axios.get(`${apiUrl}/show/${id}`, {params:{}});
+    return axios.get(`${apiUrl}/show/${id}`);
   },
 }

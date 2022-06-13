@@ -3,17 +3,18 @@ import { ScrollView, View, Button, Image, Text, ImageBackground, Pressable, Flat
 import {useTailwind} from 'tailwind-rn';
 import product from '../libs/product.js'
 import Constants from 'expo-constants';
+import { useNavigation } from '@react-navigation/native';
 
 
 const apiUrl = Constants.manifest.extra.apiMainAppUrl
+
 const Product = ({item}) => {
   const tailwind = useTailwind();
+  const navigation = useNavigation();
   return (
     <Pressable
       style={tailwind('flex-none w-40')}
-      onPress={() => navigation.navigate('Detail')}>
-        {console.log('ini item')}
-        {console.log(item)}
+      onPress={() => navigation.navigate('Detail', { productId: item.id })}>
       <Image
         source={{ uri: `${apiUrl}/uploads/${item.mainImg}`}}
         style={{height: 150, resizeMode: 'contain', margin: 10}} />
@@ -57,28 +58,6 @@ export default function ({ navigation }) {
             return <Product item={item} key={item.id} />
           })
         }
-      </ScrollView>
-      <Button title="Kategori" />
-      <ScrollView
-        horizontal={true}
-        style={tailwind('flex flex-row mb-8')}
-        showsHorizontalScrollIndicator={false} >
-        <Pressable
-          style={tailwind('flex-none w-40')}
-          onPress={() => navigation.navigate('Detail')}>
-          <Image
-            source={{ uri: 'https://via.placeholder.com/150'}}
-            style={{height: 150, resizeMode: 'contain', margin: 10}} />
-          <Text style={tailwind('text-center')}>Rp 1.000</Text>
-        </Pressable>
-        <Pressable
-          style={tailwind('flex-none w-40')}
-          onPress={() => navigation.navigate('Detail')}>
-          <Image
-            source={{ uri: 'https://via.placeholder.com/150'}}
-            style={{height: 150, resizeMode: 'contain', margin: 10}} />
-          <Text style={tailwind('text-center')}>Rp 1.000</Text>
-        </Pressable>
       </ScrollView>
     </ScrollView>
   )

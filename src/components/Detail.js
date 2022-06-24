@@ -26,8 +26,8 @@ export default function ({route}) {
         userId          : parseInt(userId),
         productId 			: detail.id || 1,
         materialId 			: detail.materialId || 2,
-        width 					: detail.width,
-        length 					: detail.length,
+        width 					: detail.bestWidth,
+        length 					: detail.bestLength,
         qty 						: parseInt(qty),
       })
       console.log(`product added ${detail.name} to cart`);

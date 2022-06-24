@@ -4,6 +4,7 @@ import {useTailwind} from 'tailwind-rn';
 import cart from '../libs/cart.js'
 import Constants from 'expo-constants';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useIsFocused } from '@react-navigation/native';
 
 
 const apiUrl = Constants.manifest.extra.apiMainAppUrl
@@ -31,6 +32,7 @@ const Carts = ({item}) => {
 }
 
 export default function ({ navigation }) {
+  const isFocused = useIsFocused();
   const tailwind = useTailwind();
   const [isLoading, setIsLoading] = useState(true);
   const [carts, setCarts] = useState();
@@ -43,17 +45,22 @@ export default function ({ navigation }) {
       setCarts(await cart.getCartByUser({userId: parseInt(userId)}));
       console.log(carts);
       setIsLoading(false);
-    } catch (err) {
+      console.log(carts);
+    }catch (err) {
       console.log(`Err get cart: ${err}`);
     }
   }
-
+  
   useEffect(() => {
-    getCarts();
-    carts.data.forEach(item => {
-      setTotalPrice(totalPrice + item.subPrice)
-    })
-  }, [])
+    if (carts) {
+      carts.data.forEach(item => {
+        setTotalPrice(totalPrice + item.subPrice)
+      })
+      return
+    }
+    if (isFocused) getCarts();
+  }, [isFocused, carts])
+  
 
   return (
     <View style={{flex:1}}>
